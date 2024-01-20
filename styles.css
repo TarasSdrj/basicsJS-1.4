@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*Practice - task 1,2*/
+#blackSquare {
+    display: on;
+    background-color: black;
+    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.buttons {
+    display: inline;
+    margin-left: 20px;
+    display: block;
+    width: 300px;
+    padding: 10px;
+}
+
+button {
+    background-color: rgb(190, 161, 235);
+    color: rgb(0, 0, 0);
+    margin: 5px;
+    border-radius: 50%;
+    border-style: solid;
+    border: 2px solid #080808;
+    width: 60px;
+    height: 60px;
+}
+
+button:hover {
+    background-color: blue;
+    color: white;
+}
+
+.button1:focus+#blackSquare {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/*Practice - task 3*/
+.squares {
+    display: on;
+    background-color: rgb(246, 246, 250);
+    width: 700px;
+    height: 140px;
+}
+
+.square {
+    display: inline-block;
+    margin: 10px;
+    background-color: #080808;
+    width: 100px;
+    height: 100px;
+}
+
+/*Practice - task 5*/
+#yellowSquare {
+    display: on;
+    background-color: yellow;
+    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+/*Practice - task 6*/
+#redSquare {
+    display: none;
+    background-color: red;
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+
+}
+
+#button6:hover+#redSquare {
+    display: inline-block;
+}
+
+/*Practice - task 7*/
+#greenRectangle {
+    display: inline;    
+    background-color: green;
+    margin-left: 20px;
+    width: 50px;
+    height: 20px;
+}
+.focusInput:hover +#greenRectangle{
+    display: inline;
+    color: red;
+}
