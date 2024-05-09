@@ -11,7 +11,7 @@
 
 <body>
     <!--Task -1/ Add black square and three button-->
-    <p>Task -1/ Add black square and three button</p>
+    <p id = p1>Task -1/ Add black square and three button</p>
     <div id="blackSquare"></div>
     <div class="buttons">
         <button class="button1">CSS</button>
@@ -20,6 +20,7 @@
         <p>Task -2. Add on-of button</p>
         <button onclick="onOfFunction()">ON/OF</button>
     </div>
+    
     <p>Task -3/ Add 5 black squares and ON/OF button</p>
     <div class="squares">
         <div class="square"></div>
@@ -46,9 +47,32 @@
         <div id="redSquare"></div>
     </div>
     <br>
-<p>Task -7/ Add green rectangle, and input.</p><br>
-<input type="text" id="focusInput" >
-<div id="greenRectangle">green</div>
+    <p>Task -7/ Add green rectangle, and input.</p><br>
+    <input type="text" id="focusInput">
+    <div id="greenRectangle"></div>
+    <br>
+    <p>Task -8/ Add input for load picture.</p>
+    <br>
+    <p>https://m.media-amazon.com/images/S/aplus-media/sc/bc58016c-52de-4de2-9d0b-3e893e5ef021.__CR0,0,300,300_PT0_SX300_V1___.jpg</p>
+    <p>https://m.media-amazon.com/images/S/aplus-media/sc/5fbfeb82-a529-4d7f-bc25-e7bc9f8a9a21.__CR0,0,300,300_PT0_SX300_V1___.jpg</p>
+    <p>https://m.media-amazon.com/images/I/41c5+Cwy8FL._AC_US100_.jpg</p>
+    <div id="picture">
+        <button id="buttonUrl" onclick="loadUrl()">show</button>
+        <input type="text" id="inputUrl" value="Add picture url">
+        <img src="21212" alt="Specified image." id="image">
+    </div>
+    <br>
+    <p>Task -9. Input to textarea. Load picturea URL-s</p>
+    <br>
+    <button id="buttonsURLs" onclick="loadURLs()">show</button>
+    <textarea id="textURLs"></textarea>
+    <div id="pictures"></div>
+    <br>
+    <p>Task - 10. Top-right syde block</p>
+    <br>
+    <div id = "topRight">
+        <p id = cursorPos></p>
+    </div>
 
 </body>
 <script src="script.js"></script>

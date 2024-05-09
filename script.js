@@ -72,6 +72,52 @@ function yellowClick1() {
   console.log(element.onclick);
 }
 
-//Task -6.
-const button6 = document.getElementById("#button6");
-console.log(button6);
+//Task -7.
+let focusInput = document.getElementById("focusInput");
+let greenRectangle = document.getElementById("greenRectangle");
+
+focusInput.addEventListener("focus", function () {
+  console.log("focus");
+  console.log(greenRectangle.style.display);
+  greenRectangle.style.display = "inline-block";
+});
+
+focusInput.addEventListener("input", function () {
+  console.log("input");
+  greenRectangle.style.display = "none";
+});
+
+//Task -8.
+let buttonUrl = document.getElementById('buttonUrl');
+let inputUrl = document.getElementById('inputUrl');
+let imgUrl = document.getElementById('image');
+function loadUrl(){
+  console.log(inputUrl.value);
+  imgUrl.src = inputUrl.value;
+  console.log(imgUrl.src);
+} 
+//Task -9.
+let textArea = document.getElementById('textURLs');
+let divPictures = document.getElementById('pictures');
+let newImage;
+function loadURLs(){
+let urls = textArea.value.split("\n");
+console.log(urls);  
+  urls.forEach(url => {
+    newImage = document.createElement('img');
+    console.log(url);
+    if(url != ""){
+      newImage.src = url;
+      divPictures.appendChild(newImage);
+    }
+  });
+}
+// Task - 10. 
+let cursorPos = document.getElementById('cursorPos');
+function pos(e){
+  cursorPos.innerText = `X: +${e.pageX}  Y: +${e.pageY}`;
+  //console.log(e.pageX);
+  //console.log(e.pageY);
+}
+
+addEventListener('mousemove', pos, false);
