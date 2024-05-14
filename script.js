@@ -11,6 +11,7 @@ function myFunction() {
 }
 
 //Task -2.
+
 function onOfFunction() {
   console.log(blackSquare.getAttributeNames());
   console.log(blackSquare.className);
@@ -19,6 +20,7 @@ function onOfFunction() {
     ? blackSquare.classList.remove("hidden")
     : blackSquare.classList.add("hidden");
 }
+
 //Task -3.
 
 const squares = document.getElementsByClassName("square");
@@ -36,7 +38,9 @@ function onOfSquares() {
     }
   }
 }
+
 //Task -4.
+
 const cssSelect = document.getElementById("select");
 console.log(cssSelect);
 function hideFunction() {
@@ -54,6 +58,7 @@ function hideFunction() {
 }
 
 //Tasck -5.
+
 const element = document.getElementById("yellowSquare");
 function yellowClick1() {
   alert("Привіт");
@@ -73,6 +78,7 @@ function yellowClick1() {
 }
 
 //Task -7.
+
 let focusInput = document.getElementById("focusInput");
 let greenRectangle = document.getElementById("greenRectangle");
 
@@ -88,6 +94,7 @@ focusInput.addEventListener("input", function () {
 });
 
 //Task -8.
+
 let buttonUrl = document.getElementById('buttonUrl');
 let inputUrl = document.getElementById('inputUrl');
 let imgUrl = document.getElementById('image');
@@ -97,6 +104,7 @@ function loadUrl(){
   console.log(imgUrl.src);
 } 
 //Task -9.
+
 let textArea = document.getElementById('textURLs');
 let divPictures = document.getElementById('pictures');
 let newImage;
@@ -112,12 +120,60 @@ console.log(urls);
     }
   });
 }
+
 // Task - 10. 
+
+const topRight =document.getElementById("topRight");
+function onTop(){
+  console.log("click");
+  topRight.classList.remove("hidden");
+}
 let cursorPos = document.getElementById('cursorPos');
 function pos(e){
-  cursorPos.innerText = `X: +${e.pageX}  Y: +${e.pageY}`;
-  //console.log(e.pageX);
-  //console.log(e.pageY);
+  cursorPos.innerText = `X: ${e.pageX}  Y: ${e.pageY}`;
+}
+addEventListener('mousemove', pos, false);
+
+// Task - 11.
+
+const divTop = document.getElementById("topRight");
+function leng(){
+  let newParagrapf = document.createElement("P");
+  let lang = document.querySelector("html").getAttribute("lang");
+  console.log(lang);
+  newParagrapf.textContent = `language of the page: ${lang}`;
+  divTop.appendChild(newParagrapf);
 }
 
-addEventListener('mousemove', pos, false);
+// Task - 12.
+
+let geoPosClick = 0;
+function geoPos() {
+  if(geoPosClick != 0){
+    console.log("second click");
+    return;
+  }
+  geoPosClick ++;
+  let newBr = document.createElement("br");
+  let newParagrapf = document.createElement("P");
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+  
+  function success(pos) {
+    let coord = pos.coords;
+    newParagrapf.innerText = `Ш: ${coord.latitude}, Д:${coord.longitude}`;
+  }
+  
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  
+  navigator.geolocation.getCurrentPosition(success, error, options);
+  
+  divTop.appendChild(newBr);
+  divTop.appendChild(newParagrapf);
+}
+

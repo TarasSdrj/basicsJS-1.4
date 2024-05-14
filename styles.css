@@ -60,7 +60,7 @@ button {
     height: 140px;
 }
 
-.square {
+.squares div {
     display: inline-block;
     margin: 10px;
     background-color: #080808;
@@ -115,18 +115,18 @@ button {
     height: 100px;
 }
 /* Practice - task 10. */
+
 #topRight {
-    display: inline-block;
+    /* display: inline-block; */
+    float: left;
     position: fixed;
     top: 0px;
     background-color: #666666;
     width: 100%;
-    height: 50px;
+    height: 60px;
 }
-#cursorPos {
+
+#topRight p {
     float: right;
-    /* padding-left: auto; */
-    /* padding-right: 0%; */
-    /* left: auto; */
-    color: chartreuse;
+    color: chartreuse; 
 }
