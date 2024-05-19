@@ -176,4 +176,64 @@ function geoPos() {
   divTop.appendChild(newBr);
   divTop.appendChild(newParagrapf);
 }
+//  Task - 13.
+
+let locSt = document.getElementById("locSt");
+let inputLS = document.getElementById("inputLS");
+
+locSt.addEventListener("mouseup", function () {
+  console.log("focus");
+  console.log(inputLS);
+  console.log(window.innerHeight)
+  console.log(document.documentElement.scrollTop)
+  if (navigator.keyboard) {
+    const keyboard = navigator.keyboard;
+  } else {
+    // Do something else.
+  }
+});
+
+// Task - 14.
+
+document.onscroll = (event) => {
+    let height = window.innerHeight;
+    let scroll = document.documentElement.scrollTop;
+    console.log(`height ${height}`);
+    console.log(`scroll ${scroll}`);
+    if(scroll > height){
+      console.log("scroll > height");
+      document.getElementById("pageDown").classList.remove("hidden");
+    }
+}
+
+function moveUp(){
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+}
+
+// Task - 15.
+
+let extGreen = document.getElementById("external");
+let intYellow = document.getElementById("internal");
+let lock = true;
+
+extGreen.addEventListener("click", extBlok(), lock);
+intYellow.addEventListener("click", intBlok(), lock);
+
+document.getElementById("external").addEventListener("click", function() {
+  alert("You clicked the orange element!");
+}, false);
+
+function extBlok(){
+  alert("you click to external green blok.");
+}
+function intBlok(){
+  alert("you click to internal yellow blok.");
+  // lock = false;
+}
+  
+  
 
