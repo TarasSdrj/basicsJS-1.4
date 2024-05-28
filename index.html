@@ -9,10 +9,10 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="b">
     <!--Task -1/ Add black square and three button-->
 
-    <p id = p1>Task -1/ Add black square and three button</p>
+    <p id=p1>Task -1/ Add black square and three button</p>
 
     <div id="blackSquare"></div>
     <div class="buttons">
@@ -24,15 +24,15 @@
 
         <button onclick="onOfFunction()">ON/OF</button>
     </div>
-    
+
     <p>Task -3/ Add 5 black squares and ON/OF button</p>
 
     <div class="squares">
-        <div ></div>
-        <div ></div>
+        <div></div>
+        <div></div>
         <div class="square"></div>
-        <div ></div>
-        <div ></div>
+        <div></div>
+        <div></div>
     </div>
     <button onclick="onOfSquares()">ON/OF</button>
 
@@ -68,8 +68,10 @@
     <p>Task -8/ Add input for load picture.</p>
 
     <br>
-    <p>https://m.media-amazon.com/images/S/aplus-media/sc/bc58016c-52de-4de2-9d0b-3e893e5ef021.__CR0,0,300,300_PT0_SX300_V1___.jpg</p>
-    <p>https://m.media-amazon.com/images/S/aplus-media/sc/5fbfeb82-a529-4d7f-bc25-e7bc9f8a9a21.__CR0,0,300,300_PT0_SX300_V1___.jpg</p>
+    <p>https://m.media-amazon.com/images/S/aplus-media/sc/bc58016c-52de-4de2-9d0b-3e893e5ef021.__CR0,0,300,300_PT0_SX300_V1___.jpg
+    </p>
+    <p>https://m.media-amazon.com/images/S/aplus-media/sc/5fbfeb82-a529-4d7f-bc25-e7bc9f8a9a21.__CR0,0,300,300_PT0_SX300_V1___.jpg
+    </p>
     <p>https://m.media-amazon.com/images/I/41c5+Cwy8FL._AC_US100_.jpg</p>
     <div id="picture">
         <button id="buttonUrl" onclick="loadUrl()">show</button>
@@ -89,45 +91,44 @@
     <p>Task - 10. Top-right syde block</p>
 
     <br>
-    <button id = "onTop" onclick = "onTop()" >On top </button>
+    <button id="onTop" onclick="onTop()">On top </button>
 
     <p>Task - 11. Information about lenguage.</p>
 
-    <button id = "lenguage" onclick = "leng()">Lenguage</button>
+    <button id="lenguage" onclick="leng()">Lenguage</button>
 
     <p>Task - 12. Information about current position.</p>
 
-    <button id = "position" onclick = "geoPos()">position</button>
-    <div class="hidden" id = "topRight">
-        <p id = "cursorPos"></p>
+    <button id="position" onclick="geoPos()">position</button>
+    <div class="hidden" id="topRight">
+        <p id="cursorPos"></p>
         <br>
-        <p id = "geoPos"></p> 
+        <p id="geoPos"></p>
     </div>
 
     <p>Task - 13. Three blocks for entering text with saving the entered data.</p>
 
     <br>
-    <div id = "storage">
-        <div id ="locSt">
+    <div id="storage">
+        <div>
             Local storage
-            <p>Enter your text:</p>
-            <p id = "inputLS"></p>
+            <p contenteditable="true" id="locSt" onmouseout="localSt()">Enter your text: </p>
         </div>
-        <div id = "cook">
+        <div>
             Cookies
-            <p>Enter your text:</p>
+            <p contenteditable="true" id="cook" onmouseout="saveCookie()">Enter your text: </p>
         </div>
-        <div id = "sesSt">
-            Session storage
-            <p>Enter your text:</p>
+        <div>
+            Session storage 
+            <p contenteditable="true" id="sesSt" onmouseout="sessionSt()">Enter your text: </p>
         </div>
     </div>
     <br>
 
     <p>Task - 14. Add button if end scroll page down.</p>
 
-    <div class="hidden" id = "pageDown">
-        <button onclick = "moveUp()">move up</button>
+    <div class="hidden" id="pageDown">
+        <button onclick="moveUp()">move up</button>
     </div>
     <br>
 
@@ -136,6 +137,31 @@
     <div id="external">
         <div id="internal"></div>
     </div>
+    <br>
+
+    <p>Task - 16. Add full scrin grey square.</p>
+
+    <button id = "grey" onclick = "addGreyFog()">grey</button>
+    <div class = "hidden"  id = "greySquare"></div>
+    <br>
+
+    <p>Task -17. </p>
+    
+    <!-- Insert type="submit" for reload -->
+    <form><input type="send" value="GO"></form>
+    <br>
+
+    <p>Task - 18. Add input for upload file.</p>
+
+<input type="file" id="fileInput">
+
+<div class="file-upload">
+    <input type="file" id="fileInput" class="file-input" />
+    <div class="file-drop-zone" id="dropZone">
+        <p id="dropZoneText">Перетягніть файл сюди або натисніть, щоб вибрати файл</p>
+    </div>
+</div>
+
 </body>
 <script src="script.js"></script>
 

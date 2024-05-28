@@ -95,49 +95,49 @@ focusInput.addEventListener("input", function () {
 
 //Task -8.
 
-let buttonUrl = document.getElementById('buttonUrl');
-let inputUrl = document.getElementById('inputUrl');
-let imgUrl = document.getElementById('image');
-function loadUrl(){
+let buttonUrl = document.getElementById("buttonUrl");
+let inputUrl = document.getElementById("inputUrl");
+let imgUrl = document.getElementById("image");
+function loadUrl() {
   console.log(inputUrl.value);
   imgUrl.src = inputUrl.value;
   console.log(imgUrl.src);
-} 
+}
 //Task -9.
 
-let textArea = document.getElementById('textURLs');
-let divPictures = document.getElementById('pictures');
+let textArea = document.getElementById("textURLs");
+let divPictures = document.getElementById("pictures");
 let newImage;
-function loadURLs(){
-let urls = textArea.value.split("\n");
-console.log(urls);  
-  urls.forEach(url => {
-    newImage = document.createElement('img');
+function loadURLs() {
+  let urls = textArea.value.split("\n");
+  console.log(urls);
+  urls.forEach((url) => {
+    newImage = document.createElement("img");
     console.log(url);
-    if(url != ""){
+    if (url != "") {
       newImage.src = url;
       divPictures.appendChild(newImage);
     }
   });
 }
 
-// Task - 10. 
+// Task - 10.
 
-const topRight =document.getElementById("topRight");
-function onTop(){
+const topRight = document.getElementById("topRight");
+function onTop() {
   console.log("click");
   topRight.classList.remove("hidden");
 }
-let cursorPos = document.getElementById('cursorPos');
-function pos(e){
+let cursorPos = document.getElementById("cursorPos");
+function pos(e) {
   cursorPos.innerText = `X: ${e.pageX}  Y: ${e.pageY}`;
 }
-addEventListener('mousemove', pos, false);
+addEventListener("mousemove", pos, false);
 
 // Task - 11.
 
 const divTop = document.getElementById("topRight");
-function leng(){
+function leng() {
   let newParagrapf = document.createElement("P");
   let lang = document.querySelector("html").getAttribute("lang");
   console.log(lang);
@@ -149,11 +149,11 @@ function leng(){
 
 let geoPosClick = 0;
 function geoPos() {
-  if(geoPosClick != 0){
+  if (geoPosClick != 0) {
     console.log("second click");
     return;
   }
-  geoPosClick ++;
+  geoPosClick++;
   let newBr = document.createElement("br");
   let newParagrapf = document.createElement("P");
   const options = {
@@ -161,79 +161,176 @@ function geoPos() {
     timeout: 5000,
     maximumAge: 0,
   };
-  
+
   function success(pos) {
     let coord = pos.coords;
     newParagrapf.innerText = `Ш: ${coord.latitude}, Д:${coord.longitude}`;
   }
-  
+
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
-  
+
   navigator.geolocation.getCurrentPosition(success, error, options);
-  
+
   divTop.appendChild(newBr);
   divTop.appendChild(newParagrapf);
 }
 //  Task - 13.
 
 let locSt = document.getElementById("locSt");
-let inputLS = document.getElementById("inputLS");
+let cook = document.getElementById("cook");
+let sesSt = document.getElementById("sesSt");
 
-locSt.addEventListener("mouseup", function () {
-  console.log("focus");
-  console.log(inputLS);
-  console.log(window.innerHeight)
-  console.log(document.documentElement.scrollTop)
-  if (navigator.keyboard) {
-    const keyboard = navigator.keyboard;
-  } else {
-    // Do something else.
+function localSt(){
+  let innerText = locSt.innerText;
+  console.log(innerText);
+  localStorage.setItem("localSt", innerText);
+  console.log("save to local storage.");
+}
+
+//Create cookie string. 
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function saveCookie(){
+  let innerText = cook.innerText;
+  console.log(innerText);
+  setCookie("innerText", innerText,1);
+  console.log("save to cookie.");
+  console.log(document.cookie);
+}
+
+function sessionSt() {
+  let innerText = sesSt.innerText;
+  console.log(innerText);
+  sessionStorage.setItem("sessionSt", innerText);
+  console.log("save to session storage.");
+}
+// loading data on page reload.
+function onPageLoad() {
+  console.log('Page reload');
+  let innerText = localStorage.getItem("localSt");
+  if(innerText){
+    console.log(innerText);
+    locSt.innerText = innerText;
   }
-});
+
+  innerText = document.cookie.split("=")[1];
+  if(innerText){
+    console.log(innerText);
+    cook.innerText = innerText;
+  }
+
+  innerText = sessionStorage.getItem("sessionSt");
+  if(innerText){
+    console.log(innerText);
+    sesSt.innerText = innerText;
+  }
+}
+// Monitors page updates.
+document.body.onload = onPageLoad;
 
 // Task - 14.
 
 document.onscroll = (event) => {
-    let height = window.innerHeight;
-    let scroll = document.documentElement.scrollTop;
-    console.log(`height ${height}`);
-    console.log(`scroll ${scroll}`);
-    if(scroll > height){
-      console.log("scroll > height");
-      document.getElementById("pageDown").classList.remove("hidden");
-    }
-}
+  let height = window.innerHeight;
+  let scroll = document.documentElement.scrollTop;
+  console.log(`height ${height}`);
+  console.log(`scroll ${scroll}`);
+  if (scroll > height) {
+    console.log("scroll > height");
+    document.getElementById("pageDown").classList.remove("hidden");
+  } else {
+    document.getElementById("pageDown").classList.add("hidden");
+  }
+};
 
-function moveUp(){
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+function moveUp() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
 }
 
 // Task - 15.
 
-let extGreen = document.getElementById("external");
-let intYellow = document.getElementById("internal");
-let lock = true;
+document.getElementById("external").addEventListener(
+  "click",
+  function () {
+    alert("you click to external green blok.");
+  },
+  false
+);
 
-extGreen.addEventListener("click", extBlok(), lock);
-intYellow.addEventListener("click", intBlok(), lock);
+document.getElementById("internal").addEventListener(
+  "click",
+  function (e) {
+    e.stopPropagation();
+    alert("you click to internal yellow blok.");
+  },
+  false
+);
 
-document.getElementById("external").addEventListener("click", function() {
-  alert("You clicked the orange element!");
-}, false);
-
-function extBlok(){
-  alert("you click to external green blok.");
+// Task -16.
+let greySquer = document.getElementById("greySquare");
+function addGreyFog() {
+  console.log("show grey div");
+  console.log(greySquer.classList);
+  greySquer.classList.remove("hidden");
+  document.body.style.overflow = 'hidden';
 }
-function intBlok(){
-  alert("you click to internal yellow blok.");
-  // lock = false;
-}
-  
-  
+
+greySquer.addEventListener("click",
+ function(){
+  document.body.style.overflow = "auto";
+  greySquer.classList.add("hidden");
+});
+
+// Task - 17.
+
+// Task - 18.
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const dropZoneText = document.getElementById('dropZoneText');
+
+    dropZone.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.classList.remove('dragover');
+        const files = event.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', (event) => {
+        const files = event.target.files;
+        handleFiles(files);
+    });
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            dropZoneText.textContent = `Вибрано файл: ${files[0].name}`;
+            dropZone.classList.add('file-selected');
+        }
+    }
+});
 
