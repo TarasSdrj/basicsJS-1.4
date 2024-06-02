@@ -119,7 +119,7 @@
             <p contenteditable="true" id="cook" onmouseout="saveCookie()">Enter your text: </p>
         </div>
         <div>
-            Session storage 
+            Session storage
             <p contenteditable="true" id="sesSt" onmouseout="sessionSt()">Enter your text: </p>
         </div>
     </div>
@@ -141,26 +141,28 @@
 
     <p>Task - 16. Add full scrin grey square.</p>
 
-    <button id = "grey" onclick = "addGreyFog()">grey</button>
-    <div class = "hidden"  id = "greySquare"></div>
+    <button id="grey" onclick="addGreyFog()">grey</button>
+    <div class="hidden" id="greySquare"></div>
     <br>
 
     <p>Task -17. </p>
-    
-    <!-- Insert type="submit" for reload -->
-    <form><input type="send" value="GO"></form>
+
+    <br>
+    <form><input type="submit" value="GO"></form>
     <br>
 
     <p>Task - 18. Add input for upload file.</p>
 
-<input type="file" id="fileInput">
+    <!-- Full information on solving the problem https://doka.guide/recipes/dragndrop-upload/ -->
 
-<div class="file-upload">
-    <input type="file" id="fileInput" class="file-input" />
-    <div class="file-drop-zone" id="dropZone">
-        <p id="dropZoneText">Перетягніть файл сюди або натисніть, щоб вибрати файл</p>
+    <div class="dropZone"  id="dropZone">
+        <form class="formUpload" id="uploadForm" method="post" enctype="multipart/form-data">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjOE6heNnfwn76w6wUnyUkMviWDDmEWC8qvV8diQQQKXb2GLfH">
+            <p>Drag the file here</p>
+            <p id="statusText"></p>
+        </form>
+
     </div>
-</div>
 
 </body>
 <script src="script.js"></script>

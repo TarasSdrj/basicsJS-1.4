@@ -188,8 +188,28 @@ button {
     height: 100%;
     overflow: hidden;
 }
-#fileInput {
-    min-width: 100px;
-    min-height: 50px;
-    background-color: azure;
-}
+
+/* Task - 18. */
+
+.dropZone{
+    display: grid;
+    min-height: 160px;
+    width: 300px;
+    margin-bottom: 25px;
+    border: 1px solid currentColor;
+    color: #1ec01b;
+    background-color: #f4f2f9;
+    font-weight: 500;
+    font-size: 18px;
+    place-content: center;
+    text-align: center;
+    opacity: 50%;
+  }
+  .formUpload {
+    background-color: #593273;
+  }
+  .active{
+    opacity: 100%;
+  }
+  
+  

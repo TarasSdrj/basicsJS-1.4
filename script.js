@@ -182,25 +182,25 @@ let locSt = document.getElementById("locSt");
 let cook = document.getElementById("cook");
 let sesSt = document.getElementById("sesSt");
 
-function localSt(){
+function localSt() {
   let innerText = locSt.innerText;
   console.log(innerText);
   localStorage.setItem("localSt", innerText);
   console.log("save to local storage.");
 }
 
-//Create cookie string. 
+//Create cookie string.
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  let expires = "expires="+d.toUTCString();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function saveCookie(){
+function saveCookie() {
   let innerText = cook.innerText;
   console.log(innerText);
-  setCookie("innerText", innerText,1);
+  setCookie("innerText", innerText, 1);
   console.log("save to cookie.");
   console.log(document.cookie);
 }
@@ -213,27 +213,27 @@ function sessionSt() {
 }
 // loading data on page reload.
 function onPageLoad() {
-  console.log('Page reload');
+  console.log("Page reload");
   let innerText = localStorage.getItem("localSt");
-  if(innerText){
+  if (innerText) {
     console.log(innerText);
     locSt.innerText = innerText;
   }
 
   innerText = document.cookie.split("=")[1];
-  if(innerText){
+  if (innerText) {
     console.log(innerText);
     cook.innerText = innerText;
   }
 
   innerText = sessionStorage.getItem("sessionSt");
-  if(innerText){
+  if (innerText) {
     console.log(innerText);
     sesSt.innerText = innerText;
   }
 }
 // Monitors page updates.
-document.body.onload = onPageLoad;
+document.body.onload = onPageLoad();
 
 // Task - 14.
 
@@ -283,54 +283,53 @@ function addGreyFog() {
   console.log("show grey div");
   console.log(greySquer.classList);
   greySquer.classList.remove("hidden");
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = "hidden";
 }
 
-greySquer.addEventListener("click",
- function(){
+greySquer.addEventListener("click", function () {
   document.body.style.overflow = "auto";
   greySquer.classList.add("hidden");
 });
 
 // Task - 17.
 
-// Task - 18.
-
-document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('fileInput');
-    const dropZone = document.getElementById('dropZone');
-    const dropZoneText = document.getElementById('dropZoneText');
-
-    dropZone.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    dropZone.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (event) => {
-        event.preventDefault();
-        dropZone.classList.remove('dragover');
-        const files = event.dataTransfer.files;
-        handleFiles(files);
-    });
-
-    fileInput.addEventListener('change', (event) => {
-        const files = event.target.files;
-        handleFiles(files);
-    });
-
-    function handleFiles(files) {
-        if (files.length > 0) {
-            dropZoneText.textContent = `Вибрано файл: ${files[0].name}`;
-            dropZone.classList.add('file-selected');
-        }
-    }
+document.addEventListener("submit", (e) => {
+  e.preventDefault();
+  return false;
 });
 
+// Task - 18.
+
+let dropZone = document.querySelector(".dropZone");
+let sendStatusText;
+// Need to override default browser behavior for 
+// dragover and drop events
+["dragover", "drop"].forEach(function (event) {
+  document.addEventListener(event, function (e) {
+    e.preventDefault();
+    return false;
+  });
+});
+
+// They asked for it to be beautiful
+dropZone.addEventListener("dragenter", function () {
+  dropZone.classList.add("active");
+});
+
+// They asked for it to be beautiful
+dropZone.addEventListener("dragleave", function () {
+  dropZone.classList.remove("active");
+});
+
+dropZone.addEventListener("drop", function () {
+console.log('drop');
+let file = event.dataTransfer?.files[0];
+console.log(file);
+if(file && !event.dataTransfer?.files[1]){
+  sendStatusText = `Loaded file - ${file.name}`;
+  } else {
+  sendStatusText = 'File not selected';
+}
+console.log(sendStatusText);
+dropZone.innerText= sendStatusText;
+});
